@@ -1,0 +1,51 @@
+body {
+    background: url(./../image/fond.jpg); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+#titre {
+text-align: center;
+}
+
+h3 {
+    left: 3em;
+}
+#link {
+    text-decoration: none;
+    color: green;
+}
+#memory {
+    left: 0%;
+    width: 50%;
+    background: lightgrey
+}
+#memoryFreeRender {
+    left: 0%;
+    width: 50%;
+    background: lightgrey;
+}
+.table {
+    text-align: center;
+    box-shadow: 1px  1px   black;
+    background: blanchedalmond;
+    border-radius: 1em;
+    margin-bottom: 0;
+}
+
+.table_legend {
+    margin-top: 0;
+    box-shadow: 1px  1px   black;
+    background: khaki;
+    border-radius: 1em;
+}
+table, th, td {
+    text-align: center;
+    border: 1px solid darkslateblue;
+}
+table {
+    text-align: center;
+    width: 30%;
+    
+}

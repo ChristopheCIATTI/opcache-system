@@ -1,0 +1,198 @@
+<title>{% block title %}Interactive Opcahce{% endblock %}</title>
+
+
+{% block section %}
+{# Stdin OUt Ecran Ordinateur Party#}
+
+<body>
+	
+			<h1 id="titre" class="col-xs-12">Opcache</h1>
+			
+			<div class="col-xs-12 col-sm-9">
+					<a type="button" class="btn btn-default btn-md col-xs-12 col-sm-offset-3" href="?e=clear" id="button">Vider</a>
+	            {{ clearCacheRender }}
+				
+				
+				<h3 class="col-xs-12 col-sm-offset-3" >Mémoire</h3>
+				<table class="col-xs-12 col-sm-offset-3 table">
+					<tr>
+						<th></th>
+						<th>Memory libre</th>
+						<th>Memory utilisé</th>
+						<th>Memory innutile</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>{{ memoryFreeRender }}</td>
+						<td>{{ memoryUsingRender }}</td>
+						<td>{{ memoryUselessRender }}</td>
+						
+				</table>
+				
+				<table class="col-xs-12 col-sm-offset-3 table_legend">
+					<tr>
+						<th>Graph Until</th>
+					</tr>
+					<tr>
+						<td><p id="memory_graph">
+							<span>{{memorySommeRender}}</span></p></td>
+					</tr>
+					<tr>
+						<td>Yellow: Memory Using</td>
+					</tr>
+					<tr>
+						<td>Blue: Memory Useless</td>
+					</tr>
+					<tr>
+						<td>Green: Memory Free</td>
+					</tr>
+				</table>
+				<style>
+					#memory_graph {
+						width: 5em;
+    					line-height: 5em;
+    					text-align: center;
+    					border-radius: 50%;
+    					padding: .5em;
+   						background: linear-gradient({{ memoryPercentFreeRender *3.6 + 270  }}deg, green 50%, transparent 50%, transparent),
+									linear-gradient({{ memoryPercentUsingRender *3.6 + 270}}deg, green 50%, yellow 50%, yellow),
+									linear-gradient({{ memoryPercentUselessRender *3.6 + 270  }}deg, blue 50%, transparent 50%, transparent);
+					}
+   						
+   					#memory_graph span{
+   						background: white;
+    					display: block;
+    					border-radius: 50%;
+   					}	
+				</style>
+    				
+{#     			I love Bootstrap ;)#}
+
+    	
+    			<h3 class="col-xs-12 col-sm-offset-3">Keys</h3>
+    			<table class="col-xs-12 col-sm-offset-3 table">
+					<tr>
+						<th></th>
+						<th>Keys libres</th>
+						<th>Keys Utilisées</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>libre {{ keysFreeRender }}</td>
+						<td>utilisé {{ keysUsingRender }}</td>
+				</table>
+				
+    			<table class="col-xs-12 col-sm-offset-3 table_legend">
+					<tr>
+						<th>Graph Until</th>
+					</tr>
+					<tr>
+						<td><p id="key_graph"><span>{{ keysSommeRender }}</span><p></td>
+					</tr>
+					<tr>
+						<td>Yellow: Keys Using</td>
+					</tr>
+					
+					<tr>
+						<td>Green: Keys Free</td>
+					</tr>
+				</table>
+    			
+    			
+    			<style>
+    				 #key_graph {
+    					width: 5em;
+    					line-height: 5em;
+    					text-align: center;
+    					border-radius: 50%;
+    					padding: .5em;
+    					background: linear-gradient({{ keysPercentFreeRender *3.6 + 270  }}deg, green 50%, transparent 50%, transparent),
+						linear-gradient({{ keysPercentUsingRender *3.6 + 270}}deg, green 50%, yellow 50%, yellow);				
+					}
+
+    				#key_graph span {
+    				background: white;
+    				display: block;
+    				border-radius: 50%;
+					}
+    			</style>
+				
+				<h3 class="col-xs-12 col-sm-offset-3">Hits</h3>
+				<table class="col-xs-12 col-sm-offset-3 table">
+					<tr>
+						<th></th>
+						<th>Hits</th>
+						<th>Miss</th>
+					</tr>
+					<tr>
+						<td></td>
+						<td>{{ hitsHitRender }}</td>
+						<td>{{ hitsMissRender }}</td>
+				</table>
+				
+				
+				
+				<table class="col-xs-12 col-sm-offset-3 table_legend">
+					<tr>
+						<th>Graph Until</th>
+					</tr>
+					<tr>
+						<td><p id="hits_graph"><span>{{ hitsSommeRender }}</span><p></td>
+					</tr>
+					<tr>
+						<td>Yellow: Miss</td>
+					</tr>
+					
+					<tr>
+						<td>Green: Hits</td>
+					</tr>
+				</table>
+				
+				
+				<style>
+					#hits_graph {
+    					width: 5em;
+    					line-height: 5em;
+    					text-align: center;
+    					border-radius: 50%;
+    					padding: .5em;
+    					background: linear-gradient({{ hitsPercentMissRender *3.6 + 270  }}deg, green 50%, transparent 50%, transparent),
+									linear-gradient({{ hitsPercentHitsRender *3.6 + 270}}deg, green 50%, yellow 50%, yellow);				
+					}
+
+    				#hits_graph span {
+    				background: white;
+    				display: block;
+    				border-radius: 50%;
+					}
+				</style>
+				
+				
+				
+				<h3 class="col-xs-12 col-sm-offset-3">Scripts {{ scriptNumberRender }}</h3>
+				</div>
+			</div>	
+	
+	
+	</body>
+{% endblock %}
+
+
+{% block stylesheets %}
+<link rel="stylesheet" type="text/css" href="{{asset('css/bootstrap.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{asset('css/opcache.css')}}" />
+<style>
+/* Css Party */
+
+    #button {
+        text-decoration: none;
+        color: green;
+    }
+    a {
+        text-decoration: none;
+        color: green;
+        
+		
+</style>
+
+{% endblock %}
